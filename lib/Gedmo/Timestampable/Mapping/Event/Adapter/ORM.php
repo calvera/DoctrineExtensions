@@ -30,7 +30,7 @@ final class ORM extends BaseAdapterORM implements TimestampableAdapter
         if (isset($mapping['type']) && in_array($mapping['type'], array('date_immutable', 'time_immutable', 'datetime_immutable', 'datetimetz_immutable'), true)) {
             return new \DateTimeImmutable();
         }
-        if (isset($mapping['type']) && in_array($mapping['type'], array('chronos_datetime'), true)) {
+        if (isset($mapping['type']) && in_array($mapping['type'], array('chronos_datetime', 'chronos_datetimetz', 'chronos_date'), true)) {
             return Chronos::now();
         }
         return \DateTime::createFromFormat('U.u', number_format(microtime(true), 6, '.', ''))
